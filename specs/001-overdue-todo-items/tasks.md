@@ -17,7 +17,7 @@
 
 **Purpose**: Confirm the existing test suite is green before any changes are made
 
-- [ ] T001 Run baseline test suite — `npm test` in `packages/frontend` and `packages/backend` — confirm all existing tests pass before any changes
+- [X] T001 Run baseline test suite — `npm test` in `packages/frontend` and `packages/backend` — confirm all existing tests pass before any changes
 
 ---
 
@@ -27,8 +27,8 @@
 
 **⚠️ TDD REQUIRED (Constitution Principle II)**: Write tests first, confirm they FAIL, then implement
 
-- [ ] T002 Write unit tests for `isOverdue` in `packages/frontend/src/utils/__tests__/dateUtils.test.js` — freeze time to `2026-03-24T12:00:00` using `jest.useFakeTimers()` / `jest.setSystemTime()`; cover all 5 truth-table cases from data-model.md (yesterday=true, today=false, tomorrow=false, no dueDate=false, completed+yesterday=false); run tests and confirm ALL FAIL (file does not exist yet)
-- [ ] T003 Implement `isOverdue(todo)` in `packages/frontend/src/utils/dateUtils.js` — use `toLocaleDateString('en-CA')` for timezone-safe local date; export as named export; run tests from T002 and confirm ALL PASS
+- [X] T002 Write unit tests for `isOverdue` in `packages/frontend/src/utils/__tests__/dateUtils.test.js` — freeze time to `2026-03-24T12:00:00` using `jest.useFakeTimers()` / `jest.setSystemTime()`; cover all 5 truth-table cases from data-model.md (yesterday=true, today=false, tomorrow=false, no dueDate=false, completed+yesterday=false); run tests and confirm ALL FAIL (file does not exist yet)
+- [X] T003 Implement `isOverdue(todo)` in `packages/frontend/src/utils/dateUtils.js` — use `toLocaleDateString('en-CA')` for timezone-safe local date; export as named export; run tests from T002 and confirm ALL PASS
 
 **Checkpoint**: `isOverdue` utility is complete and fully tested — user story phases can now begin
 
@@ -44,12 +44,12 @@
 
 ### Tests for User Story 1
 
-- [ ] T004 [US1] Add overdue rendering tests to `packages/frontend/src/components/__tests__/TodoCard.test.js` — freeze time (same pattern as T002); add 5 test cases: (1) overdue todo shows "Overdue" badge text, (2) overdue todo card has `todo-card-overdue` class, (3) completed todo with past date shows NO badge, (4) todo with no dueDate shows NO badge, (5) todo due today shows NO badge; run tests and confirm ALL NEW TESTS FAIL
+- [X] T004 [US1] Add overdue rendering tests to `packages/frontend/src/components/__tests__/TodoCard.test.js` — freeze time (same pattern as T002); add 5 test cases: (1) overdue todo shows "Overdue" badge text, (2) overdue todo card has `todo-card-overdue` class, (3) completed todo with past date shows NO badge, (4) todo with no dueDate shows NO badge, (5) todo due today shows NO badge; run tests and confirm ALL NEW TESTS FAIL
 
 ### Implementation for User Story 1
 
-- [ ] T005 [P] [US1] Modify `packages/frontend/src/components/TodoCard.js` — import `isOverdue` from `../utils/dateUtils`; compute `const overdue = isOverdue(todo)` inside the component; conditionally add `todo-card-overdue` class to the card container div; conditionally render `<span className="overdue-badge">Overdue</span>` inside `.todo-content` after the title; run T004 tests and confirm ALL PASS
-- [ ] T006 [P] [US1] Add overdue CSS rules to `packages/frontend/src/App.css` — append `.todo-card-overdue` (4px solid left border + 8% danger color background tint using `color-mix`) and `.overdue-badge` (inline pill, 12px/600 weight, `--danger-color` background, white text, `--radius-sm` border-radius) and `[data-theme="dark"] .overdue-badge` (override background to `#c62828` for WCAG AA ≥4.5:1 contrast in dark mode); use design tokens from `theme.css` throughout — no hardcoded arbitrary colors
+- [X] T005 [P] [US1] Modify `packages/frontend/src/components/TodoCard.js` — import `isOverdue` from `../utils/dateUtils`; compute `const overdue = isOverdue(todo)` inside the component; conditionally add `todo-card-overdue` class to the card container div; conditionally render `<span className="overdue-badge">Overdue</span>` inside `.todo-content` after the title; run T004 tests and confirm ALL PASS
+- [X] T006 [P] [US1] Add overdue CSS rules to `packages/frontend/src/App.css` — append `.todo-card-overdue` (4px solid left border + 8% danger color background tint using `color-mix`) and `.overdue-badge` (inline pill, 12px/600 weight, `--danger-color` background, white text, `--radius-sm` border-radius) and `[data-theme="dark"] .overdue-badge` (override background to `#c62828` for WCAG AA ≥4.5:1 contrast in dark mode); use design tokens from `theme.css` throughout — no hardcoded arbitrary colors
 
 **Checkpoint**: User Story 1 is fully functional — overdue todos are visually distinguished in the list
 
@@ -65,7 +65,7 @@
 
 ### Tests for User Story 2
 
-- [ ] T007 [US2] Add completion-toggle overdue tests to `packages/frontend/src/components/__tests__/TodoCard.test.js` — add 2 test cases: (1) a todo rendered with `completed=0` and past dueDate shows badge; re-render same component with `completed=1` and same past dueDate and verify badge is gone, (2) a todo rendered with `completed=1` and past dueDate shows no badge; re-render with `completed=0` and verify badge appears; run tests and confirm they PASS (no new implementation needed — behavior is already correct from T005)
+- [X] T007 [US2] Add completion-toggle overdue tests to `packages/frontend/src/components/__tests__/TodoCard.test.js` — add 2 test cases: (1) a todo rendered with `completed=0` and past dueDate shows badge; re-render same component with `completed=1` and same past dueDate and verify badge is gone, (2) a todo rendered with `completed=1` and past dueDate shows no badge; re-render with `completed=0` and verify badge appears; run tests and confirm they PASS (no new implementation needed — behavior is already correct from T005)
 
 **Checkpoint**: Both User Story 1 and User Story 2 are fully functional and tested
 
@@ -75,8 +75,8 @@
 
 **Purpose**: Validate end-to-end correctness and coverage across the full feature
 
-- [ ] T008 [P] Run full frontend test suite — `npm test` in `packages/frontend` — confirm all tests pass (existing + new) and line coverage is ≥ 80% for `utils/dateUtils.js` and the modified component paths
-- [ ] T009 [P] Verify all 8 acceptance scenarios from `specs/001-overdue-todo-items/quickstart.md` manually in the browser — launch app (`npm start` in both packages), walk through each scenario row in the Acceptance Verification table and confirm expected outcomes
+- [X] T008 [P] Run full frontend test suite — `npm test` in `packages/frontend` — confirm all tests pass (existing + new) and line coverage is ≥ 80% for `utils/dateUtils.js` and the modified component paths
+- [X] T009 [P] Verify all 8 acceptance scenarios from `specs/001-overdue-todo-items/quickstart.md` manually in the browser — launch app (`npm start` in both packages), walk through each scenario row in the Acceptance Verification table and confirm expected outcomes
 
 ---
 

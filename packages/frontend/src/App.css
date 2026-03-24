@@ -574,3 +574,25 @@ a:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
+
+/* Overdue indicator styles */
+.todo-card-overdue {
+  border-left: 4px solid var(--danger-color);
+  background-color: color-mix(in srgb, var(--danger-color) 8%, var(--bg-surface));
+}
+
+.overdue-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background-color: var(--danger-color);
+  color: #ffffff;
+  margin-left: var(--space-xs);
+  vertical-align: middle;
+}
+
+[data-theme="dark"] .overdue-badge {
+  background-color: #c62828; /* WCAG AA: ~5.9:1 against white in dark mode */
+}
